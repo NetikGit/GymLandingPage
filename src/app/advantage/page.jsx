@@ -1,4 +1,3 @@
-import Logo from "../../../public/logo.png";
 import Image from "next/image";
 import lineIcon from "../../../public/icon_line.png";
 import timeIcon from "../../../public/icon_time.png";

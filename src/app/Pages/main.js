@@ -48,8 +48,8 @@ export default function Main() {
         </div>
         <div className="hidden md:flex space-x-[40px] text-[18px] font-semibold">
           <h1>HOME</h1>
-          <h1>ABOUT US</h1>
-          <h1 onClick={() => router.push("/contact")}>CONTACT US</h1>
+          <h1 onClick={() => router.push("#")}>ABOUT US</h1>
+          <h1 onClick={() => router.push("/contact.js")}>CONTACT US</h1>
           <h1>INFO</h1>
                   </div>
       </div>

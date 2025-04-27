@@ -4,7 +4,10 @@ import Staff from "./Staff";
 export default function Membership(){
     return(
     <div>
-    <h1 className="mt-[100px] text-white justify-self-center text-[48px] font-bold ">Academy membership</h1>
+    <h1 className="flex mt-24 text-white justify-center text-3xl md:text-5xl font-bold text-center">
+  Academy membership
+</h1>
+
     <div className=" flex space-x-[68px]">
         {/* <ThreeDCardDemo/>
         <ThreeDCardDemo/>

@@ -41,8 +41,15 @@ export default function Contact() {
 
           {/* Social Media */}
           <div className="flex space-x-4 mt-4">
-            <a href="#" className="text-gray-400 hover:text-yellow-400 text-2xl"><FaFacebook /></a>
-            <a href="#" className="text-gray-400 hover:text-yellow-400 text-2xl"><FaInstagram /></a>
+          <a
+  href="https://www.instagram.com/shotokan_m.m.aacademy?igsh=ZDF0aHIxNzIyMmR4"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-gray-400 hover:text-yellow-400 text-2xl"
+>
+  <FaInstagram />
+</a>
+ <a href="#" className="text-gray-400 hover:text-yellow-400 text-2xl"><FaFacebook /></a>
             <a href="#" className="text-gray-400 hover:text-yellow-400 text-2xl"><FaTwitter /></a>
             <a href="#" className="text-gray-400 hover:text-yellow-400 text-2xl"><FaYoutube /></a>
           </div>

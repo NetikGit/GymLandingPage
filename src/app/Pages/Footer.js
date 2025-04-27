@@ -31,9 +31,9 @@ export default function Footer() {
         {/* Contact & Social Media */}
         <div className="flex flex-col items-center md:items-start">
           <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
-          <p className="text-gray-300">📍 123 Gym Street, Fitness City</p>
-          <p className="text-gray-300">📧 contact@ramsfitness.com</p>
-          <p className="text-gray-300">📞 +123 456 7890</p>
+          <p className="text-gray-300">📍 Aadhrsh vidhya mandir school, opp. baba property, Sector 26, Pratap Nagar, Jaipur, Rajasthan 302033</p>
+          <p className="text-gray-300">📧 contact@shotocan.com</p>
+          <p className="text-gray-300">📞 +91 74140 69375</p>
 
           {/* Social Icons */}
           <div className="flex space-x-4 mt-4">
