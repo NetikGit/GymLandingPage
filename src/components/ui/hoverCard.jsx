@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -11,14 +11,24 @@ export const DirectionAwareHover = ({
   children,
   childrenClassName,
   imageClassName,
-  className
+  className,
 }) => {
   const ref = useRef(null);
   const [direction, setDirection] = useState("left");
+  const [isMobileVisible, setIsMobileVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleMouseEnter = (event) => {
-    if (!ref.current) return;
-
+    if (!ref.current || isMobile) return;
     const direction = getDirection(event, ref.current);
     switch (direction) {
       case 0:
@@ -39,6 +49,12 @@ export const DirectionAwareHover = ({
     }
   };
 
+  const handleMobileClick = () => {
+    if (isMobile) {
+      setIsMobileVisible((prev) => !prev);
+    }
+  };
+
   const getDirection = (ev, obj) => {
     const { width: w, height: h, left, top } = obj.getBoundingClientRect();
     const x = ev.clientX - left - (w / 2) * (w > h ? h / w : 1);
@@ -50,6 +66,7 @@ export const DirectionAwareHover = ({
   return (
     <motion.div
       onMouseEnter={handleMouseEnter}
+      onClick={handleMobileClick}
       ref={ref}
       className={cn(
         "md:h-96 md:w-96 w-72 h-72 bg-transparent rounded-lg overflow-hidden group/card relative",
@@ -60,11 +77,21 @@ export const DirectionAwareHover = ({
         <motion.div
           className="relative h-full w-full"
           initial="initial"
-          whileHover={direction}
+          whileHover={!isMobile ? direction : "initial"}
           exit="exit"
         >
-          {/* Black overlay only visible on md+ */}
-          <motion.div className="hidden md:block absolute inset-0 w-full h-full bg-black/40 z-10 transition duration-500" />
+          {/* Desktop hover overlay */}
+          <motion.div
+            className={cn(
+              "absolute inset-0 w-full h-full bg-black/40 z-10 transition duration-500",
+              "hidden md:block"
+            )}
+          />
+
+          {/* Mobile overlay on click */}
+          {isMobile && isMobileVisible && (
+            <div className="absolute inset-0 bg-black/40 z-10 transition duration-500" />
+          )}
 
           <motion.div
             variants={variants}
@@ -80,25 +107,26 @@ export const DirectionAwareHover = ({
             />
           </motion.div>
 
-          {/* Text always visible on mobile */}
-          <motion.div
-            variants={textVariants}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className={cn(
-              "text-white absolute bottom-4 left-4 z-40",
-              "opacity-100 md:group-hover/card:opacity-100",
-              childrenClassName
-            )}
-          >
-            {children}
-          </motion.div>
+          {(isMobile ? isMobileVisible : true) && (
+            <motion.div
+              variants={textVariants}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className={cn(
+                "text-white absolute bottom-4 left-4 z-40",
+                "opacity-100",
+                childrenClassName
+              )}
+            >
+              {children}
+            </motion.div>
+          )}
         </motion.div>
       </AnimatePresence>
     </motion.div>
   );
 };
 
-// Animation on hover directions
+// Animation variants
 const variants = {
   initial: { x: 0 },
   exit: { x: 0, y: 0 },

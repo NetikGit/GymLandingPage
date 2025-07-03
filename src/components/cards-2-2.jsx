@@ -11,11 +11,13 @@ export const DirectionAwareHover2 = ({
   children,
   childrenClassName,
   imageClassName,
-  className
+  className,
 }) => {
   const ref = useRef(null);
   const [direction, setDirection] = useState("left");
+  const [isMobileVisible, setIsMobileVisible] = useState(false);
 
+  // Detect hover direction for desktop
   const handleMouseEnter = (event) => {
     if (!ref.current) return;
     const direction = getDirection(event, ref.current);
@@ -38,6 +40,13 @@ export const DirectionAwareHover2 = ({
     }
   };
 
+  // Toggle for mobile tap
+  const handleMobileClick = () => {
+    if (window.innerWidth < 768) {
+      setIsMobileVisible(!isMobileVisible);
+    }
+  };
+
   const getDirection = (ev, obj) => {
     const { width: w, height: h, left, top } = obj.getBoundingClientRect();
     const x = ev.clientX - left - (w / 2) * (w > h ? h / w : 1);
@@ -49,6 +58,7 @@ export const DirectionAwareHover2 = ({
   return (
     <motion.div
       onMouseEnter={handleMouseEnter}
+      onClick={handleMobileClick}
       ref={ref}
       className={cn(
         "md:h-96 md:w-96 w-72 h-72 bg-transparent rounded-lg overflow-hidden group/card relative",
@@ -62,10 +72,14 @@ export const DirectionAwareHover2 = ({
           whileHover={direction}
           exit="exit"
         >
-          {/* Overlay only for md and up */}
-          <motion.div
-            className="hidden md:block absolute inset-0 w-full h-full bg-black/40 z-10 transition duration-500"
-          />
+          {/* Overlay for desktop only */}
+          <motion.div className="hidden md:block absolute inset-0 w-full h-full bg-black/40 z-10 transition duration-500" />
+
+          {/* Mobile overlay when clicked */}
+          {isMobileVisible && (
+            <div className="md:hidden absolute inset-0 bg-black/40 z-10 transition duration-500" />
+          )}
+
           <motion.div
             variants={variants}
             className="h-full w-full relative bg-gray-50 dark:bg-black"
@@ -83,28 +97,30 @@ export const DirectionAwareHover2 = ({
             />
           </motion.div>
 
-          {/* Always show text on mobile, animate on hover for md+ */}
-          <motion.div
-            variants={textVariants}
-            transition={{
-              duration: 0.5,
-              ease: "easeOut",
-            }}
-            className={cn(
-              "text-white absolute bottom-4 left-4 z-40",
-              "opacity-100 md:group-hover/card:opacity-100",
-              childrenClassName
-            )}
-          >
-            {children}
-          </motion.div>
+          {/* Text on hover (desktop) or click (mobile) */}
+          {(isMobileVisible || typeof window !== "undefined" && window.innerWidth >= 768) && (
+            <motion.div
+              variants={textVariants}
+              transition={{
+                duration: 0.5,
+                ease: "easeOut",
+              }}
+              className={cn(
+                "text-white absolute bottom-4 left-4 z-40",
+                "opacity-100",
+                childrenClassName
+              )}
+            >
+              {children}
+            </motion.div>
+          )}
         </motion.div>
       </AnimatePresence>
     </motion.div>
   );
 };
 
-// Animation variants
+// Hover direction variants
 const variants = {
   initial: { x: 0 },
   exit: { x: 0, y: 0 },
@@ -114,6 +130,7 @@ const variants = {
   right: { x: -20 },
 };
 
+// Text reveal animations
 const textVariants = {
   initial: { y: 0, x: 0, opacity: 0 },
   exit: { y: 0, x: 0, opacity: 0 },
