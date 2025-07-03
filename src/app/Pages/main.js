@@ -11,8 +11,8 @@ import Facility from "./Facility";
 import { ParallaxScrollDemo } from "./GymImages";
 import FloatingNavDemo from "./navbar";
 import Workout from "./Workouts";
-import Footer from "./Footer";
-import Contact from "./contact";
+import Footer from "../Info/page";
+import Contact from "../Contact/page";
 import { useRouter } from "next/navigation";
 // Loading Screen Component
 function LoadingScreen() {
@@ -47,10 +47,10 @@ export default function Main() {
           <h1 className="text-[24px] font-semibold">Shotokan Martialarts Academy</h1>
         </div>
         <div className="hidden md:flex space-x-[40px] text-[18px] font-semibold">
-          <h1>HOME</h1>
+          <h1 onClick={() => router.push("/")}>HOME</h1>
           <h1 onClick={() => router.push("#")}>ABOUT US</h1>
-          <h1 onClick={() => router.push("/contact.js")}>CONTACT US</h1>
-          <h1>INFO</h1>
+          <h1 onClick={() => router.push("/Contact")}>CONTACT US</h1>
+          <h1 onClick={() => router.push("/Info")}>INFO</h1>
                   </div>
       </div>
       {/* <FloatingNavDemo /> */}

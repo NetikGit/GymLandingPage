@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import coach from "../../public/train.jpeg"
+import coach from "../../public/Surendra.png"
 export const DirectionAwareHover2 = ({
   ImageUrl,
   children,
@@ -78,9 +78,9 @@ export const DirectionAwareHover2 = ({
             }}>
             <Image
               alt="image"
-              className={cn("h-full w-full object-cover scale-[1.25]", imageClassName)}
-              width="1000"
-              height="1000"
+              className={cn("h-full w-full object-cover scale-[1.10]", imageClassName)}
+              width="900"
+              height="900"
               src={coach} />
           </motion.div>
           <motion.div

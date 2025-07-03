@@ -11,7 +11,7 @@ export default function Staff() {
                 <h1 className="mt-[120px] text-white text-center text-[48px] font-bold">Coaches</h1>
 
                 {/* First flex container for the cards */}
-                <div className="flex flex-wrap justify-center gap-4"> 
+                <div className="flex flex-wrap justify-center gap-24"> 
                     <DirectionAwareHoverDemo2 />
                     
                     

@@ -14,7 +14,7 @@ export const HoverEffect = ({
     (<div
       className={cn("grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4  py-10", className)}>
       {items.map((item, idx) => (
-        <Link
+        <div
           href={item?.link}
           key={item?.link}
           className="relative group  block p-2 h-full w-full"
@@ -45,7 +45,7 @@ export const HoverEffect = ({
             </div>
             
           </Card>
-        </Link>
+        </div>
       ))}
     </div>)
   );

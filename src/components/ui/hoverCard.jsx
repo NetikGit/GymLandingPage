@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import DavidLaid from "../../../public/train2.jpeg"
+import DavidLaid from "../../../public/Deepa.jpg"
 import Gymtrainer from "../../../public/train2.jpeg"
 export const DirectionAwareHover = ({
   Gymtrainer,
@@ -76,13 +76,12 @@ export const DirectionAwareHover = ({
             transition={{
               duration: 0.2,
               ease: "easeOut",
-            }}>
-            <Image
-              alt="image"
-              className={cn("h-fit w-fit object-cover scale-[1.15]", imageClassName)}
-              width="1000"
-              height="1000"
-              src={DavidLaid} />
+            }}><Image
+                          alt="image"
+                          className={cn("h-full w-full object-cover scale-[1.10]", imageClassName)}
+                          width="1000"
+                          height="1000"
+                          src={DavidLaid} />
           </motion.div>
           <motion.div
             variants={textVariants}
