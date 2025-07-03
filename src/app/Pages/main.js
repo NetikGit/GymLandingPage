@@ -15,12 +15,16 @@ import Footer from "../Info/page";
 import Contact from "../Contact/page";
 import { useRouter } from "next/navigation";
 // Loading Screen Component
-function LoadingScreen() {
+export function LoadingScreen() {
   return (
-    <div className="fixed top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-black text-white z-50">
-      <Image src={Logo} alt="Loading Logo" width={120} height={120} />
-      <h1 className="text-3xl font-bold mt-4">Welcome to Shotokan Martialarts Academy</h1>
-      <div className="mt-6 w-20 h-20 border-t-4 border-yellow-300 rounded-full animate-spin"></div>
+    <div className="fixed top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-black text-white z-50 px-4 text-center">
+      <Image src={Logo} alt="Loading Logo" width={100} height={100} priority />
+
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold mt-4 leading-tight">
+        Welcome to <br /> Shotokan Martial Arts Academy
+      </h1>
+
+      <div className="mt-6 w-12 h-12 sm:w-16 sm:h-16 border-t-4 border-yellow-300 rounded-full animate-spin" />
     </div>
   );
 }
