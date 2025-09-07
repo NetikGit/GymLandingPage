@@ -2,9 +2,9 @@ import { HoverEffect } from "../../components/ui/cards-hover-effects";
 
 export default function CardHoverEffectDemo() {
   return (
-    (<div className="max-w-full mx-auto mt-16 sm:max-w-5xl lg:ml-[250px] lg:mt-[100px]">
-      <HoverEffect items={projects} />
-    </div>)
+    (<div className="w-full flex justify-center mt-16 sm:max-w-5xl lg:ml-[150px] lg:mt-[100px]">
+  <HoverEffect items={projects} />
+  </div>)
   );
 }
 export const projects = [
@@ -17,20 +17,20 @@ export const projects = [
   },
   {
     title:"3-Month Membership",
-    price:4000,
+    price:4500,
     description:"This package contains 3 months membership only . " ,
     link: "https://meta.com",
   },
   {
     title: "6- Month Membership",
-    price:7200,
+    price:8400,
     description:
       "This package contains 6 months membership only ",
     link: "https://stripe.com",
   },
   {
     title: "Yearly",
-    price:12000,
+    price:14000,
     description:
       "This package contains  membership for a year ",
     link: "https://netflix.com",

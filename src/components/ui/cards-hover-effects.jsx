@@ -1,7 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
 import { useState } from "react";
 
 export const HoverEffect = ({
@@ -12,7 +11,7 @@ export const HoverEffect = ({
 
   return (
     (<div
-      className={cn("grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4  py-10", className)}>
+      className={cn("grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-4 py-10 px-2 ", className)}>
       {items.map((item, idx) => (
         <div
           href={item?.link}

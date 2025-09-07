@@ -17,7 +17,7 @@ export function ParallaxScrollDemo() {
     <>
     <h1 className="flex mt-24 text-white justify-center text-3xl md:text-5xl font-bold text-center">
     EMPOWERING YOU TO EVOLVE INTO THE BEST VERSION OF YOURSELF.</h1>
-     <ParallaxScrollSecond images={images} className="mt-[50px]" />;
+     <ParallaxScrollSecond images={images} className="mt-[50px]" />
      </>
   )
 }

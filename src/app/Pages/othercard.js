@@ -6,14 +6,15 @@ export function DirectionAwareHoverDemo2() {
 
   return (
     <div className="relative flex flex-col md:flex-row items-center justify-center gap-6 md:h-[40rem] px-4 py-8">
-      <DirectionAwareHover2 image={image}>
+     <div>
+       <DirectionAwareHover2 image={image}>
         <p className="font-bold text-xl">Surendra Singh</p>
         <p className="font-normal text-sm">Male Coach</p>
         <p className="font-normal text-sm">
           5th dan karate Black belt, International referee, National Grappling Coach
         </p>
       </DirectionAwareHover2>
-
+</div>
       <DirectionAwareHover image={image} className="md:ml-4">
         <p className="font-bold text-xl">Deepa Gupta</p>
         <p className="font-normal text-sm">Female Coach</p>
